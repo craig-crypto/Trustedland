@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "../auth/[...nextauth]/route";
 import { PrismaClient, RIBAStage } from "@/app/generated/prisma";
 import { z } from "zod";
 
