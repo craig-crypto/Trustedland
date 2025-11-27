@@ -5,11 +5,12 @@ const prisma = new PrismaClient();
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { professionalId: string } }
+  { params }: { params: Promise<{ professionalId: string }> }
 ) {
   try {
+    const { professionalId } = await params;
     const professional = await prisma.professionalProfile.findUnique({
-      where: { id: params.professionalId },
+      where: { id: professionalId },
       include: {
         user: {
           select: {
